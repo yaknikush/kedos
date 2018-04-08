@@ -54,18 +54,18 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t atags)
 
 	uart_init();
 	kprint("Hello, kernel world.\r\n"
-               "Kernel start in %p\r\n"
-               "Kernel stack in %p\r\n"
-               "Kernel global variables in %p\r\n", (void*) kernel_main, hex, &global_var);
+	       "Kernel start in %p\r\n"
+	       "Kernel stack in %p\r\n"
+	       "Kernel global variables in %p\r\n", (void*) kernel_main, hex, &global_var);
 
 /********************************************************************/
 
 	phys_area_init(&new_heap, KERNEL_HEAP_START_SIZE);
 
-	mem_test();
-    	heap_test();
-		res_table_init();
-    	hardware_init();
+//	mem_test();
+//	heap_test();
+	res_table_init();
+	hardware_init();
 
 /********************************************************************/
 
@@ -98,7 +98,14 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t atags)
 	//timer_test();
 	//lib_test(); 
 	//rbuffer_test();	
-	thread_test();
+	//thread_test();
+
+	/* === frame buffer test === 
+	   tests functionality of frame buffer bcm2836-dependent module */
+	fb_test();
+
+	kprint("Frame buffer!\n");
+	kdie("(frame buffer tests has ended, so we left here)");
 
 /********************************************************************/
 

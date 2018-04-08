@@ -25,6 +25,7 @@
 #include <lib/string.h>
 #include <bcm2836/defines.h>
 #include <bcm2836/timer.h>
+#include <bcm2836/fb.h>
 #include <mm/heap.h>
 #include <sys/kthread.h>
 #include <sys/syscall.h>
@@ -44,6 +45,8 @@ int rbuffer_test();
 int thread_test();
 
 int sd_test();
+
+int fb_test();
 
 void data_message_dump(void* data);
 
